@@ -1,0 +1,21 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League",
+        "url": "https://basketball.fantasysports.yahoo.com/nba/1000",
+        "draft_status": "postdraft",
+        "num_teams": "10",
+        "scoring_type": "head",
+        "league_type": "private",
+        "current_week": "12",
+        "start_week": "1",
+        "end_week": "23",
+        "game_code": "nba",
+        "season": "2025"
+      }
+    ]
+  }
+}

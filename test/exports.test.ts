@@ -1,9 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
-import { PROVIDER as espnProvider, League } from '../src/espn/index.js';
+import { PROVIDER as espnProvider, League as EspnLeague } from '../src/espn/index.js';
 import { PROVIDER as fantraxProvider } from '../src/fantrax/index.js';
 import { PROVIDERS, type Provider } from '../src/index.js';
-import { PROVIDER as yahooProvider } from '../src/yahoo/index.js';
+import {
+  PROVIDER as yahooProvider,
+  Game,
+  League as YahooLeague,
+  YahooClient,
+} from '../src/yahoo/index.js';
 
 describe('provider subpath exports', () => {
   it('exports espn provider constant', () => {
@@ -11,11 +16,17 @@ describe('provider subpath exports', () => {
   });
 
   it('exports espn League class', () => {
-    expect(League).toBeTypeOf('function');
+    expect(EspnLeague).toBeTypeOf('function');
   });
 
   it('exports yahoo provider constant', () => {
     expect(yahooProvider).toBe('yahoo');
+  });
+
+  it('exports yahoo League, Game, and YahooClient', () => {
+    expect(YahooLeague).toBeTypeOf('function');
+    expect(Game).toBeTypeOf('function');
+    expect(YahooClient).toBeTypeOf('function');
   });
 
   it('exports fantrax provider constant', () => {
