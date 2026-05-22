@@ -156,7 +156,9 @@ npm run build
 npm run verify
 ```
 
-**Contributors and coding agents:** see [AGENTS.md](./AGENTS.md) for architecture, conventions, and how to add a new provider.
+**Contributors:** see [CONTRIBUTING.md](./CONTRIBUTING.md) for the PR workflow, branch protection, and merge policy.
+
+**Coding agents:** see [AGENTS.md](./AGENTS.md) for architecture, conventions, and how to add a new provider.
 
 ## Roadmap
 
