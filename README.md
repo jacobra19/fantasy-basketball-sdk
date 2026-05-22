@@ -1,6 +1,32 @@
-# fantasy-basketball-sdk
+<p align="center">
+  <h1 align="center">fantasy-basketball-sdk</h1>
+  <p align="center">
+    Tree-shakeable fantasy basketball API SDK for ESPN, Yahoo, Fantrax, and more
+    <br/>
+    by <a href="https://github.com/jacobra19">Yakov Rakhamimov</a>
+  </p>
+</p>
+<br/>
 
-Tree-shakeable fantasy basketball API SDK for ESPN, Yahoo, Fantrax, and more.
+<p align="center">
+<a href="https://github.com/jacobra19/fantasy-basketball-sdk/actions?query=branch%3Amain"><img src="https://github.com/jacobra19/fantasy-basketball-sdk/actions/workflows/ci.yml/badge.svg?event=push&branch=main" alt="CI status" /></a>
+<a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/jacobra19/fantasy-basketball-sdk" alt="License"></a>
+<a href="https://www.npmjs.com/package/fantasy-basketball-sdk" rel="nofollow"><img src="https://img.shields.io/npm/dw/fantasy-basketball-sdk.svg" alt="npm"></a>
+<a href="https://github.com/jacobra19/fantasy-basketball-sdk" rel="nofollow"><img src="https://img.shields.io/github/stars/jacobra19/fantasy-basketball-sdk" alt="stars"></a>
+</p>
+
+<div align="center">
+  <a href="#quick-start">Quick start</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="./CONTRIBUTING.md">Contributing</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="./AGENTS.md">Agents</a>
+  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  <a href="https://github.com/jacobra19/fantasy-basketball-sdk">GitHub</a>
+  <br />
+</div>
+
+<br/>
 
 > **Early development** — ESPN and Yahoo NBA APIs are available. Fantrax is still a placeholder.
 
@@ -166,4 +192,4 @@ ESPN and Yahoo NBA APIs are implemented. Fantrax client is planned.
 
 ## License
 
-[ISC](./package.json)
+[ISC](./LICENSE)
