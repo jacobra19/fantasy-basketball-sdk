@@ -1,0 +1,18 @@
+{
+  "settings": {
+    "proTeams": [
+      {
+        "id": 13,
+        "proGamesByScoringPeriod": {
+          "10": [
+            {
+              "awayProTeamId": 13,
+              "homeProTeamId": 2,
+              "date": 1700000000000
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

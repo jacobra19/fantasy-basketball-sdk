@@ -1,0 +1,16 @@
+{
+  "draftDetail": {
+    "drafted": true,
+    "picks": [
+      {
+        "teamId": 1,
+        "playerId": 100,
+        "roundId": 1,
+        "roundPickNumber": 1,
+        "bidAmount": null,
+        "keeper": false,
+        "nominatingTeamId": 1
+      }
+    ]
+  }
+}
