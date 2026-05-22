@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { PROVIDER as espnProvider } from '../src/espn/index.js';
+import { PROVIDER as espnProvider, League } from '../src/espn/index.js';
 import { PROVIDER as fantraxProvider } from '../src/fantrax/index.js';
 import { PROVIDERS, type Provider } from '../src/index.js';
 import { PROVIDER as yahooProvider } from '../src/yahoo/index.js';
@@ -8,6 +8,10 @@ import { PROVIDER as yahooProvider } from '../src/yahoo/index.js';
 describe('provider subpath exports', () => {
   it('exports espn provider constant', () => {
     expect(espnProvider).toBe('espn');
+  });
+
+  it('exports espn League class', () => {
+    expect(League).toBeTypeOf('function');
   });
 
   it('exports yahoo provider constant', () => {

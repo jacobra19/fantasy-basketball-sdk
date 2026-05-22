@@ -2,7 +2,7 @@
 
 Tree-shakeable fantasy basketball API SDK for ESPN, Yahoo, Fantrax, and more.
 
-> **Early development** — Provider modules (`espn`, `yahoo`, `fantrax`) are placeholders today. The public API will grow as real platform clients are added; do not expect league or auth APIs yet.
+> **Early development** — ESPN basketball read APIs are available. Yahoo and Fantrax modules are still placeholders.
 
 ## Features
 
@@ -35,23 +35,39 @@ npm install /path/to/fantasy-basketball-sdk
 
 Import only what you need. Prefer a **provider subpath** when you work with one platform so bundlers can tree-shake the rest.
 
-### Node / Bun (TypeScript or JavaScript)
+### ESPN (Node / Bun)
 
 ```ts
-import { PROVIDERS, type Provider } from 'fantasy-basketball-sdk';
-import { PROVIDER } from 'fantasy-basketball-sdk/espn';
-import { createFetchClient } from 'fantasy-basketball-sdk/runtime';
+import { League } from 'fantasy-basketball-sdk/espn';
 
-const client = createFetchClient();
-const platform: Provider = PROVIDER;
+// Public leagues: omit espnS2 and swid. Private leagues: pass ESPN session cookies.
+const league = await League.create({
+  leagueId: 123456,
+  seasonId: 2025,
+  espnS2: '...',
+  swid: '{XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}',
+});
 
-console.log(PROVIDERS, platform, typeof client.fetch);
+console.log(league.settings.name);
+
+for (const team of league.standings()) {
+  console.log(team.teamName, team.wins, team.losses);
+}
+
+const matchups = await league.scoreboard();
+const freeAgents = await league.freeAgents({ size: 25 });
+const transactions = await league.transactions();
 ```
+
+`League.create` loads league data by default. Pass `fetchLeague: false` to construct without an initial fetch, then call `await league.fetchLeague()` when ready.
 
 ### Deno
 
 ```ts
-import { PROVIDER } from 'npm:fantasy-basketball-sdk/espn';
+import { League } from 'npm:fantasy-basketball-sdk/espn';
+
+const league = await League.create({ leagueId: 123456, seasonId: 2025 });
+console.log(league.standings().map((team) => team.teamName));
 ```
 
 ### Browser / Cloudflare Workers
@@ -59,7 +75,9 @@ import { PROVIDER } from 'npm:fantasy-basketball-sdk/espn';
 Use your bundler’s usual ESM resolution (Vite, webpack, esbuild, etc.):
 
 ```ts
-import { PROVIDER } from 'fantasy-basketball-sdk/espn';
+import { League } from 'fantasy-basketball-sdk/espn';
+
+const league = await League.create({ leagueId: 123456, seasonId: 2025 });
 ```
 
 ## Subpath exports
@@ -67,7 +85,7 @@ import { PROVIDER } from 'fantasy-basketball-sdk/espn';
 | Subpath                          | Purpose                    | Main symbols (today)               |
 | -------------------------------- | -------------------------- | ---------------------------------- |
 | `fantasy-basketball-sdk`         | Root entry                 | `Provider`, `PROVIDERS`            |
-| `fantasy-basketball-sdk/espn`    | ESPN module                | `PROVIDER`                         |
+| `fantasy-basketball-sdk/espn`    | ESPN NBA read API          | `League`, `Team`, `Player`, `Matchup` |
 | `fantasy-basketball-sdk/yahoo`   | Yahoo module               | `PROVIDER`                         |
 | `fantasy-basketball-sdk/fantrax` | Fantrax module             | `PROVIDER`                         |
 | `fantasy-basketball-sdk/core`    | Shared types and constants | `Provider`, `PROVIDERS`            |
@@ -101,7 +119,7 @@ npm run verify
 
 ## Roadmap
 
-ESPN, Yahoo, and Fantrax API clients are planned. The current release is an infra and build scaffold with stub exports.
+ESPN NBA read APIs are implemented. Yahoo and Fantrax clients are planned.
 
 ## License
 

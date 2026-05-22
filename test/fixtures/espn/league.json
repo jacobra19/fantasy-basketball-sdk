@@ -1,0 +1,139 @@
+{
+  "id": 123456,
+  "seasonId": 2025,
+  "scoringPeriodId": 10,
+  "status": {
+    "currentMatchupPeriod": 5,
+    "firstScoringPeriod": 1,
+    "finalScoringPeriod": 20,
+    "previousSeasons": [2024, 2023]
+  },
+  "settings": {
+    "name": "Test League",
+    "size": 2,
+    "scheduleSettings": {
+      "matchupPeriodCount": 18,
+      "matchupPeriods": [],
+      "playoffTeamCount": 4,
+      "playoffSeedingRule": "TOTAL_POINTS",
+      "divisions": [{ "id": 1, "name": "East" }]
+    },
+    "tradeSettings": {
+      "vetoVotesRequired": 0,
+      "deadlineDate": 0,
+      "revisionHours": 24
+    },
+    "draftSettings": { "keeperCount": 0 },
+    "scoringSettings": {
+      "matchupTieRule": "NONE",
+      "playoffMatchupTieRule": "NONE",
+      "scoringType": "H2H_POINTS"
+    },
+    "acquisitionSettings": {
+      "isUsingAcquisitionBudget": false,
+      "acquisitionBudget": 0,
+      "acquisitionLimit": -1,
+      "matchupAcquisitionLimit": -1,
+      "matchupLimitPerScoringPeriod": -1,
+      "minimumBid": 0,
+      "waiverProcessDays": [],
+      "waiverProcessHour": 10
+    }
+  },
+  "members": [
+    {
+      "id": "m1",
+      "displayName": "Owner One",
+      "firstName": "Owner",
+      "lastName": "One"
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "abbrev": "TM1",
+      "name": "Team Alpha",
+      "divisionId": 1,
+      "owners": ["m1"],
+      "playoffSeed": 1,
+      "rankFinal": 0,
+      "record": {
+        "overall": {
+          "wins": 5,
+          "losses": 3,
+          "ties": 0,
+          "pointsFor": 800,
+          "pointsAgainst": 750
+        }
+      },
+      "transactionCounter": {
+        "acquisitions": 2,
+        "acquisitionBudgetSpent": 0,
+        "drops": 1,
+        "trades": 0
+      },
+      "roster": {
+        "entries": [
+          {
+            "playerPoolEntry": {
+              "player": {
+                "id": 100,
+                "fullName": "Test Player",
+                "defaultPositionId": 1,
+                "eligibleSlots": [1, 2],
+                "proTeamId": 13,
+                "stats": [
+                  {
+                    "seasonId": 2025,
+                    "id": "002025",
+                    "scoringPeriodId": 0,
+                    "appliedTotal": 250,
+                    "appliedAverage": 25,
+                    "stats": { "0": 250 }
+                  }
+                ]
+              }
+            },
+            "lineupSlotId": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "abbrev": "TM2",
+      "location": "Team",
+      "nickname": "Beta",
+      "divisionId": 1,
+      "owners": [],
+      "playoffSeed": 2,
+      "record": {
+        "overall": {
+          "wins": 4,
+          "losses": 4,
+          "ties": 0,
+          "pointsFor": 700,
+          "pointsAgainst": 720
+        }
+      },
+      "transactionCounter": {},
+      "roster": { "entries": [] }
+    }
+  ],
+  "schedule": [
+    {
+      "matchupPeriodId": 5,
+      "winner": "HOME",
+      "home": {
+        "teamId": 1,
+        "totalPoints": 120,
+        "pointsByScoringPeriod": { "10": 120 }
+      },
+      "away": {
+        "teamId": 2,
+        "totalPoints": 100,
+        "pointsByScoringPeriod": { "10": 100 }
+      }
+    }
+  ]
+}
