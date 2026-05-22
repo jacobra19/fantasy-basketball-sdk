@@ -1,0 +1,62 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League"
+      },
+      {
+        "transactions": {
+          "count": 1,
+          "0": {
+            "transaction": {
+              "transaction_key": "466.l.1000.tr.1",
+              "transaction_id": "1",
+              "type": "add/drop",
+              "status": "successful",
+              "timestamp": "1700000000",
+              "players": {
+                "count": 2,
+                "0": {
+                  "player": [
+                    [
+                      {
+                        "player_key": "466.p.2001",
+                        "player_id": "2001",
+                        "name": { "full": "Added Player" }
+                      }
+                    ],
+                    {
+                      "transaction_data": {
+                        "type": "add",
+                        "destination_team_key": "466.l.1000.t.1"
+                      }
+                    }
+                  ]
+                },
+                "1": {
+                  "player": [
+                    [
+                      {
+                        "player_key": "466.p.2002",
+                        "player_id": "2002",
+                        "name": { "full": "Dropped Player" }
+                      }
+                    ],
+                    {
+                      "transaction_data": {
+                        "type": "drop",
+                        "source_team_key": "466.l.1000.t.1"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

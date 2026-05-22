@@ -1,0 +1,40 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League"
+      },
+      {
+        "teams": {
+          "count": 2,
+          "0": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.1000.t.1",
+                  "team_id": "1",
+                  "name": "Alpha Squad",
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/1000/1"
+                }
+              ]
+            ]
+          },
+          "1": {
+            "team": [
+              [
+                {
+                  "team_key": "466.l.1000.t.2",
+                  "team_id": "2",
+                  "name": "Beta Ballers",
+                  "url": "https://basketball.fantasysports.yahoo.com/nba/1000/2"
+                }
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

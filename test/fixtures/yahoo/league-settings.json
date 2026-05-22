@@ -1,0 +1,57 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League",
+        "season": "2025",
+        "game_code": "nba",
+        "scoring_type": "head",
+        "num_teams": "10",
+        "current_week": "12"
+      },
+      {
+        "settings": [
+          {
+            "draft_type": "live",
+            "is_auction_draft": "0",
+            "scoring_type": "head",
+            "uses_playoff": "1",
+            "waiver_type": "R",
+            "uses_faab": "1",
+            "max_teams": "10",
+            "roster_positions": [
+              {
+                "roster_position": [
+                  { "position": "PG", "position_type": "P", "count": "1" },
+                  { "position": "SG", "position_type": "P", "count": "1" },
+                  { "position": "G", "position_type": "P", "count": "1" },
+                  { "position": "SF", "position_type": "P", "count": "1" },
+                  { "position": "PF", "position_type": "P", "count": "1" },
+                  { "position": "F", "position_type": "P", "count": "1" },
+                  { "position": "C", "position_type": "P", "count": "1" },
+                  { "position": "Util", "position_type": "P", "count": "2" },
+                  { "position": "BN", "position_type": "BN", "count": "3" }
+                ]
+              }
+            ],
+            "stat_categories": [
+              {
+                "stats": [
+                  {
+                    "stat": [
+                      { "stat_id": "12", "name": "Points", "display_name": "PTS" },
+                      { "stat_id": "15", "name": "Rebounds", "display_name": "REB" },
+                      { "stat_id": "16", "name": "Assists", "display_name": "AST" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

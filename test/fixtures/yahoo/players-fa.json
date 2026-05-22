@@ -1,0 +1,31 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League"
+      },
+      {
+        "players": {
+          "count": 1,
+          "0": {
+            "player": [
+              [
+                {
+                  "player_key": "466.p.2001",
+                  "player_id": "2001",
+                  "name": { "full": "Free Agent Player" },
+                  "editorial_team_abbr": "LAL"
+                }
+              ],
+              {
+                "percent_owned": { "value": "42" }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

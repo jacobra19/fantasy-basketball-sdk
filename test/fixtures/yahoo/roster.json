@@ -1,0 +1,52 @@
+{
+  "fantasy_content": {
+    "team": [
+      [
+        {
+          "team_key": "466.l.1000.t.1",
+          "team_id": "1",
+          "name": "Alpha Squad"
+        }
+      ],
+      {
+        "roster": [
+          {
+            "coverage_type": "date",
+            "date": "2025-01-15",
+            "players": {
+              "count": 2,
+              "0": {
+                "player": [
+                  [
+                    {
+                      "player_key": "466.p.1001",
+                      "player_id": "1001",
+                      "name": { "full": "Test Player One" }
+                    }
+                  ],
+                  {
+                    "selected_position": [{ "position": "PG" }]
+                  }
+                ]
+              },
+              "1": {
+                "player": [
+                  [
+                    {
+                      "player_key": "466.p.1002",
+                      "player_id": "1002",
+                      "name": { "full": "Test Player Two" }
+                    }
+                  ],
+                  {
+                    "selected_position": [{ "position": "BN" }]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

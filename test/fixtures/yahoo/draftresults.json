@@ -1,0 +1,24 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League"
+      },
+      {
+        "draft_results": {
+          "count": 1,
+          "0": {
+            "draft_result": {
+              "pick": "1",
+              "round": "1",
+              "team_key": "466.l.1000.t.1",
+              "player_key": "466.p.3001"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

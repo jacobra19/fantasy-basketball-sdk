@@ -2,7 +2,7 @@
 
 Tree-shakeable fantasy basketball API SDK for ESPN, Yahoo, Fantrax, and more.
 
-> **Early development** — ESPN basketball read APIs are available. Yahoo and Fantrax modules are still placeholders.
+> **Early development** — ESPN and Yahoo NBA APIs are available. Fantrax is still a placeholder.
 
 ## Features
 
@@ -61,6 +61,47 @@ const transactions = await league.transactions();
 
 `League.create` loads league data by default. Pass `fetchLeague: false` to construct without an initial fetch, then call `await league.fetchLeague()` when ready.
 
+### Yahoo (Node / Bun)
+
+Yahoo requires an OAuth 2.0 access token with Fantasy Sports scope. Obtain tokens via the [Yahoo OAuth 2.0 guide](https://developer.yahoo.com/oauth2/guide/) in your app, then pass the token to the SDK:
+
+```ts
+import { Game, League, YahooClient, addPlayer, setLineup } from 'fantasy-basketball-sdk/yahoo';
+
+const accessToken = '...'; // from your OAuth flow
+
+// Discover leagues for the logged-in user
+const game = Game.forNba(new YahooClient({ accessToken }));
+const leagueKeys = await game.leagueKeys({ seasons: ['2025'] });
+
+// Load a league by key or by numeric id + season
+const league = await League.create({
+  leagueKey: leagueKeys[0],
+  accessToken,
+});
+
+console.log(league.settings?.name);
+
+const standings = await league.standings();
+const matchups = await league.scoreboard();
+const freeAgents = await league.players({ status: 'FA', count: 25 });
+
+// Write: lineup edit (NBA uses date-based rosters)
+const team = league.toTeam(`${league.leagueKey}.t.1`);
+await setLineup(team, {
+  date: '2025-01-15',
+  moves: [{ playerKey: '466.p.1234', position: 'PG' }],
+});
+
+// Write: add a free agent
+await addPlayer(league, {
+  teamKey: `${league.leagueKey}.t.1`,
+  playerKey: '466.p.5678',
+});
+```
+
+Pass `refreshAccessToken` to `YahooClient` or `League.create` for automatic retry when the token expires.
+
 ### Deno
 
 ```ts
@@ -86,7 +127,7 @@ const league = await League.create({ leagueId: 123456, seasonId: 2025 });
 | -------------------------------- | -------------------------- | ---------------------------------- |
 | `fantasy-basketball-sdk`         | Root entry                 | `Provider`, `PROVIDERS`            |
 | `fantasy-basketball-sdk/espn`    | ESPN NBA read API          | `League`, `Team`, `Player`, `Matchup` |
-| `fantasy-basketball-sdk/yahoo`   | Yahoo module               | `PROVIDER`                         |
+| `fantasy-basketball-sdk/yahoo`   | Yahoo NBA API (read + write) | `League`, `Game`, `Team`, `Player`, `YahooClient` |
 | `fantasy-basketball-sdk/fantrax` | Fantrax module             | `PROVIDER`                         |
 | `fantasy-basketball-sdk/core`    | Shared types and constants | `Provider`, `PROVIDERS`            |
 | `fantasy-basketball-sdk/runtime` | HTTP adapter               | `FetchClient`, `createFetchClient` |
@@ -119,7 +160,7 @@ npm run verify
 
 ## Roadmap
 
-ESPN NBA read APIs are implemented. Yahoo and Fantrax clients are planned.
+ESPN and Yahoo NBA APIs are implemented. Fantrax client is planned.
 
 ## License
 

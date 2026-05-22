@@ -1,0 +1,60 @@
+{
+  "fantasy_content": {
+    "league": [
+      {
+        "league_key": "466.l.1000",
+        "league_id": "1000",
+        "name": "Test NBA League",
+        "season": "2025"
+      },
+      {
+        "scoreboard": [
+          {
+            "matchups": {
+              "count": 1,
+              "0": {
+                "matchup": {
+                  "week": "12",
+                  "status": "postevent",
+                  "is_tied": "0",
+                  "winner_team_key": "466.l.1000.t.1",
+                  "teams": {
+                    "count": 2,
+                    "0": {
+                      "team": [
+                        [
+                          {
+                            "team_key": "466.l.1000.t.1",
+                            "team_id": "1",
+                            "name": "Alpha Squad"
+                          }
+                        ],
+                        {
+                          "team_points": { "total": "112.50" }
+                        }
+                      ]
+                    },
+                    "1": {
+                      "team": [
+                        [
+                          {
+                            "team_key": "466.l.1000.t.2",
+                            "team_id": "2",
+                            "name": "Beta Ballers"
+                          }
+                        ],
+                        {
+                          "team_points": { "total": "98.25" }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
