@@ -8,6 +8,7 @@
 </p>
 <br/>
 
+
 <p align="center">
 <a href="https://github.com/jacobra19/fantasy-basketball-sdk/actions?query=branch%3Amain"><img src="https://github.com/jacobra19/fantasy-basketball-sdk/actions/workflows/ci.yml/badge.svg?event=push&branch=main" alt="CI status" /></a>
 <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/jacobra19/fantasy-basketball-sdk" alt="License"></a>
