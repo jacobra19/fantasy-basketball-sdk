@@ -78,13 +78,16 @@ Releases are automated with [semantic-release](https://github.com/semantic-relea
 
 PRs are squash-merged, so the **PR title becomes the commit message on `main`**. Use [Conventional Commits](https://www.conventionalcommits.org/) so semantic-release can pick the version:
 
-| PR title | npm bump (pre-1.0) |
-| -------- | ------------------ |
-| `fix: parse Yahoo team logos` | patch |
-| `feat: add Yahoo scoreboard client` | patch (minor once ≥1.0.0) |
-| `feat!: remove deprecated export` | major |
+| PR title | npm bump |
+| -------- | -------- |
+| `fix: parse Yahoo team logos` | patch (`1.0.1`, `1.0.2`, …) |
+| `feat: add Yahoo scoreboard client` | minor (`1.1.0`, `1.2.0`, …) |
+| `feat!: remove deprecated export` or `BREAKING CHANGE:` footer | major (`2.0.0`, …) |
+| `chore:` / `docs:` / `ci:` / etc. | no publish |
 
-Titles like `chore: update CI` or `docs: fix typo` merge cleanly but **do not publish** a new npm version.
+The first automated release is always `1.0.0` (semantic-release first-release behavior), even if the triggering commit is a `fix:`.
+
+Non-conventional PR titles merge cleanly but **do not publish** a new npm version. Rules are defined in [`.releaserc.json`](./.releaserc.json).
 
 ### Maintainer one-time setup
 

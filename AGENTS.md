@@ -66,7 +66,8 @@ Merges to `main` run the `verify` job, then a `release` job that uses [semantic-
 
 - **Do not manually bump `package.json` version** for routine releases — git tags and GitHub Releases are the source of truth
 - **PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/)** (`feat:`, `fix:`, etc.) because PRs are squash-merged and the title becomes the commit on `main`
-- **`chore:` / `docs:` / `ci:` merges do not publish** — only `feat`, `fix`, `perf`, and breaking changes trigger a release
+- **Version bumps** (defined in `.releaserc.json`): `fix:`/`perf:` → patch, `feat:` → minor, `feat!:`/`BREAKING CHANGE:` → major; `chore:`/`docs:`/`ci:`/etc. → no publish
+- **First release** is always `1.0.0` regardless of the triggering commit type
 - **One-time npm setup:** register `fantasy-basketball-sdk` on npm and configure [trusted publishing](https://docs.npmjs.com/trusted-publishers) for GitHub Actions (`jacobra19/fantasy-basketball-sdk`, workflow `.github/workflows/ci.yml`, branch `main`). Fallback: add an `NPM_TOKEN` repo secret.
 
 ## Runtime Import Examples
