@@ -60,6 +60,15 @@ Build output mirrors `src/` under `dist/` via Vite `preserveModules` + `tsc --em
 4. Add a smoke test in `test/exports.test.ts`
 5. Run `npm run build && npm run verify`
 
+## Releases
+
+Merges to `main` run the `verify` job, then a `release` job that uses [semantic-release](https://github.com/semantic-release/semantic-release) to publish to npm when the squash-merge commit is releasable.
+
+- **Do not manually bump `package.json` version** for routine releases — git tags and GitHub Releases are the source of truth
+- **PR titles must follow [Conventional Commits](https://www.conventionalcommits.org/)** (`feat:`, `fix:`, etc.) because PRs are squash-merged and the title becomes the commit on `main`
+- **`chore:` / `docs:` / `ci:` merges do not publish** — only `feat`, `fix`, `perf`, and breaking changes trigger a release
+- **One-time npm setup:** register `fantasy-basketball-sdk` on npm and configure [trusted publishing](https://docs.npmjs.com/trusted-publishers) for GitHub Actions (`jacobra19/fantasy-basketball-sdk`, workflow `.github/workflows/ci.yml`, branch `main`). Fallback: add an `NPM_TOKEN` repo secret.
+
 ## Runtime Import Examples
 
 ```ts

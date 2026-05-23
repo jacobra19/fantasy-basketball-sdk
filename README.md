@@ -44,17 +44,17 @@
 
 ## Installation
 
-When published to npm:
-
 ```bash
 npm install fantasy-basketball-sdk
 ```
 
-The package is not on npm yet (`0.0.0`). For local development or testing:
+Releases are published automatically to npm when releasable changes merge to `main`. See [CONTRIBUTING.md](./CONTRIBUTING.md#releases) for how versioning works.
+
+For local development or testing before a release:
 
 ```bash
 npm install /path/to/fantasy-basketball-sdk
-# or: npm install github:<user>/fantasy-basketball-sdk
+# or: npm install github:jacobra19/fantasy-basketball-sdk
 ```
 
 ## Quick start
