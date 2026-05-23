@@ -72,7 +72,29 @@ Or configure manually under **Settings → Rules → Rulesets → New branch rul
 
 ## Releases
 
-Releases are tagged from `main` using [semantic versioning](https://semver.org/). The `main` branch should always pass CI and represent the latest releasable state.
+Releases are automated with [semantic-release](https://github.com/semantic-release/semantic-release) when releasable changes land on `main`. The `release` CI job runs after `verify` passes on push to `main`.
+
+### PR titles (required)
+
+PRs are squash-merged, so the **PR title becomes the commit message on `main`**. Use [Conventional Commits](https://www.conventionalcommits.org/) so semantic-release can pick the version:
+
+| PR title | npm bump (pre-1.0) |
+| -------- | ------------------ |
+| `fix: parse Yahoo team logos` | patch |
+| `feat: add Yahoo scoreboard client` | patch (minor once ≥1.0.0) |
+| `feat!: remove deprecated export` | major |
+
+Titles like `chore: update CI` or `docs: fix typo` merge cleanly but **do not publish** a new npm version.
+
+### Maintainer one-time setup
+
+Before the first automated release:
+
+1. Register the **`fantasy-basketball-sdk`** package on [npm](https://www.npmjs.com/).
+2. Configure **trusted publishing** (recommended): npm → package → Publishing access → GitHub Actions → repository `jacobra19/fantasy-basketball-sdk`, workflow `.github/workflows/ci.yml`, branch `main`.
+3. If trusted publishing is unavailable, add an **`NPM_TOKEN`** secret (automation token with publish scope) to the GitHub repo.
+
+If the release job fails with permission errors under branch protection, allow `github-actions[bot]` to create tags and GitHub Releases on `main`.
 
 ## Questions
 
