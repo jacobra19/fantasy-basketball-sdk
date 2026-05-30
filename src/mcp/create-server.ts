@@ -1,17 +1,21 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 
-import { registerEspnTools } from './tools/espn.js';
-import { registerYahooTools } from './tools/yahoo.js';
+import { DEFAULT_INSTRUCTIONS } from './instructions.js';
+import { registerWorkflowTools } from './tools/index.js';
 
 export function createMcpServer(): McpServer {
-  const server = new McpServer({
-    name: 'fantasy-basketball-sdk',
-    version: process.env.npm_package_version ?? '0.0.0',
-  });
+  const server = new McpServer(
+    {
+      name: 'fantasy-basketball-sdk',
+      version: process.env.npm_package_version ?? '0.0.0',
+    },
+    {
+      instructions: DEFAULT_INSTRUCTIONS,
+    },
+  );
 
-  registerEspnTools(server);
-  registerYahooTools(server);
+  registerWorkflowTools(server);
 
   return server;
 }
