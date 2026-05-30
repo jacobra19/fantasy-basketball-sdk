@@ -6,6 +6,9 @@
   "type": "module",
   "sideEffects": false,
   "license": "ISC",
+  "bin": {
+    "fantasy-basketball-mcp": "./dist/mcp/server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jacobra19/fantasy-basketball-sdk.git"
@@ -46,11 +49,15 @@
       "types": "./dist/runtime/index.d.ts",
       "import": "./dist/runtime/index.js"
     },
+    "./mcp": {
+      "types": "./dist/mcp/index.d.ts",
+      "import": "./dist/mcp/index.js"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {
     "dev": "vite build --watch",
-    "build": "vite build && tsc -p tsconfig.build.json",
+    "build": "vite build && tsc -p tsconfig.build.json && tsc -p tsconfig.mcp.json",
     "typecheck": "tsc -p tsconfig.src.json && tsc -p tsconfig.node.json",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -71,5 +78,9 @@
     "typescript-eslint": "^8.33.1",
     "vite": "^8.0.0",
     "vitest": "^3.2.3"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
   }
 }

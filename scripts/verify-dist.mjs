@@ -7,6 +7,7 @@ import { PROVIDERS as coreProviders } from '../dist/core/index.js';
 import { PROVIDER as espnProvider } from '../dist/espn/index.js';
 import { PROVIDER as fantraxProvider } from '../dist/fantrax/index.js';
 import { createFetchClient } from '../dist/runtime/index.js';
+import { createMcpServer } from '../dist/mcp/index.js';
 import { PROVIDER as yahooProvider } from '../dist/yahoo/index.js';
 
 const checks = [
@@ -16,6 +17,7 @@ const checks = [
   ['yahoo', yahooProvider === 'yahoo'],
   ['fantrax', fantraxProvider === 'fantrax'],
   ['runtime createFetchClient', typeof createFetchClient().fetch === 'function'],
+  ['mcp createMcpServer', typeof createMcpServer === 'function'],
 ];
 
 for (const [name, ok] of checks) {
