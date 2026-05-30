@@ -64,7 +64,7 @@
     "lint": "eslint src",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
-    "verify": "publint && node scripts/verify-dist.mjs",
+    "verify": "publint && node scripts/verify-dist.mjs && node scripts/smoke-mcp.mjs",
     "prepublishOnly": "npm run build && npm run verify"
   },
   "devDependencies": {

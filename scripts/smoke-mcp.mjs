@@ -11,6 +11,15 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const serverPath = resolve(__dirname, '../dist/mcp/server.js');
 
+const expected = [
+  'findRosterOptions',
+  'getDraftContext',
+  'getLeagueActivity',
+  'getLeagueOverview',
+  'getMatchupContext',
+  'searchPlayers',
+];
+
 const transport = new StdioClientTransport({
   command: process.execPath,
   args: [serverPath],
@@ -23,25 +32,6 @@ try {
   await client.connect(transport);
   const tools = await client.listTools();
   const toolNames = tools.tools.map((tool) => tool.name).sort();
-
-  const expected = [
-    'espn-box-scores',
-    'espn-free-agents',
-    'espn-league-info',
-    'espn-player-info',
-    'espn-recent-activity',
-    'espn-scoreboard',
-    'espn-standings',
-    'espn-transactions',
-    'yahoo-draft-results',
-    'yahoo-league-info',
-    'yahoo-player-stats',
-    'yahoo-players',
-    'yahoo-scoreboard',
-    'yahoo-standings',
-    'yahoo-teams',
-    'yahoo-transactions',
-  ];
 
   if (toolNames.join(',') !== expected.join(',')) {
     console.error('smoke-mcp: unexpected tools', toolNames);
