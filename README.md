@@ -54,8 +54,12 @@ Releases are published automatically to npm when releasable changes merge to `ma
 For local development or testing before a release:
 
 ```bash
-npm install /path/to/fantasy-basketball-sdk
-# or: npm install github:jacobra19/fantasy-basketball-sdk
+# Pack and install the built tarball (recommended)
+npm run build && npm pack
+npm install /path/to/fantasy-basketball-sdk/fantasy-basketball-sdk-*.tgz
+
+# Or link for iterative development
+npm link
 ```
 
 ## Quick start

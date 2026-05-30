@@ -31,7 +31,7 @@ npm ci && npm run typecheck && npm run lint && npm run test && npm run build && 
 - **Keep PRs focused.** One logical change per PR is easier to review and revert.
 - **CI must pass.** The `verify` job runs typecheck, lint, test, build, and package verification.
 - **Match project conventions.** See [AGENTS.md](./AGENTS.md) for architecture, import rules, and how to add a provider.
-- **No secrets.** Do not commit ESPN cookies, league tokens, or real credentials. Use fixtures in `test/fixtures/`.
+- **No secrets.** Do not commit ESPN cookies, league tokens, or real credentials. Use fixtures in `test/fixtures/`. See [SECURITY.md](./SECURITY.md) for MCP credential handling and secret-manager guidance.
 
 ## Code conventions (summary)
 
@@ -94,10 +94,17 @@ Non-conventional PR titles merge cleanly but **do not publish** a new npm versio
 Before the first automated release:
 
 1. Register the **`fantasy-basketball-sdk`** package on [npm](https://www.npmjs.com/).
-2. Configure **trusted publishing** (recommended): npm → package → Publishing access → GitHub Actions → repository `jacobra19/fantasy-basketball-sdk`, workflow `.github/workflows/ci.yml`, branch `main`.
-3. If trusted publishing is unavailable, add an **`NPM_TOKEN`** secret (automation token with publish scope) to the GitHub repo.
+2. Enable **2FA** on your npm account for auth and publishing:
+   ```bash
+   npm profile enable-2fa auth-and-writes
+   ```
+3. Configure **trusted publishing** (required): npm → package → Publishing access → GitHub Actions → repository `jacobra19/fantasy-basketball-sdk`, workflow `.github/workflows/ci.yml`, branch `main`. This uses OIDC short-lived tokens and automatically attaches provenance attestations — no long-lived npm token is needed in CI.
+4. After the first release, confirm **provenance** is visible on the npm package page.
+5. **`NPM_TOKEN` fallback only:** If trusted publishing is temporarily unavailable, add a scoped automation token as a GitHub secret, use it only until OIDC is restored, rotate it after use, and remove it once trusted publishing works again. Never commit tokens to the repo.
 
 If the release job fails with permission errors under branch protection, allow `github-actions[bot]` to create tags and GitHub Releases on `main`.
+
+See [SECURITY.md](./SECURITY.md) for vulnerability reporting and supply-chain practices.
 
 ## Questions
 

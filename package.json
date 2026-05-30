@@ -65,12 +65,18 @@
     "format": "prettier --check .",
     "format:write": "prettier --write .",
     "verify": "publint && node scripts/verify-dist.mjs",
-    "prepublishOnly": "npm run build && npm run verify"
+    "prepublishOnly": "npm run build && npm run verify",
+    "release": "semantic-release",
+    "security:lockfile": "lockfile-lint --path package-lock.json --type npm --allowed-hosts npm --validate-https --validate-package-names",
+    "security:audit": "npm audit --audit-level=moderate",
+    "security:signatures": "npm audit signatures",
+    "security": "npm run security:lockfile && npm run security:audit"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
     "@types/node": "^22.15.29",
     "eslint": "^9.28.0",
+    "lockfile-lint": "^4.14.1",
     "prettier": "^3.5.3",
     "publint": "^0.3.12",
     "semantic-release": "^25.0.3",

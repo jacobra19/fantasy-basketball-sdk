@@ -6,3 +6,6 @@ dist
 coverage
 .vite
 plans
+.env
+.env.*
+!.env.example
