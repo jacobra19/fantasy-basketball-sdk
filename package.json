@@ -64,13 +64,13 @@
     "lint": "eslint src",
     "format": "prettier --check .",
     "format:write": "prettier --write .",
-    "verify": "publint && node scripts/verify-dist.mjs",
-    "prepublishOnly": "npm run build && npm run verify",
     "release": "semantic-release",
     "security:lockfile": "lockfile-lint --path package-lock.json --type npm --allowed-hosts npm --validate-https --validate-package-names",
     "security:audit": "npm audit --audit-level=moderate",
     "security:signatures": "npm audit signatures",
-    "security": "npm run security:lockfile && npm run security:audit"
+    "security": "npm run security:lockfile && npm run security:audit",
+    "verify": "publint && node scripts/verify-dist.mjs && node scripts/smoke-mcp.mjs",
+    "prepublishOnly": "npm run build && npm run verify"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",
