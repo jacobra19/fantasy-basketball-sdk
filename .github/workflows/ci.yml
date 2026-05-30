@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -17,7 +20,9 @@ jobs:
           node-version: '22'
           cache: npm
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
+
+      - run: npm run security
 
       - uses: amannn/action-semantic-pull-request@v5
         if: github.event_name == 'pull_request'
@@ -39,6 +44,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: verify
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
       contents: write
       issues: write
@@ -53,10 +61,11 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+          registry-url: https://registry.npmjs.org
 
-      - run: npm ci
+      - run: npm ci --ignore-scripts
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: npm run release
