@@ -34,6 +34,13 @@ describe('provider subpath exports', () => {
   });
 });
 
+describe('mcp subpath export', () => {
+  it('exports startMcpServer helper', async () => {
+    const { createMcpServer } = await import('../src/mcp/index.js');
+    expect(createMcpServer).toBeTypeOf('function');
+  });
+});
+
 describe('root export', () => {
   it('exports Provider type at compile time', () => {
     const provider: Provider = 'espn';
