@@ -1,4 +1,6 @@
 #!/usr/bin/env node
-import { startMcpServer } from './create-server.js';
+import process from 'node:process';
 
-await startMcpServer();
+import { runCli } from './cli.js';
+
+process.exitCode = await runCli();
