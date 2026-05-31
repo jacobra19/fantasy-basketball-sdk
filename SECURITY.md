@@ -19,6 +19,8 @@ This SDK and its MCP server read fantasy-platform credentials from environment v
 - Use [`.env.example`](./.env.example) as a template with placeholder values only.
 - For MCP smoke tests locally, inject secrets via your shell or a secret manager rather than persisting them in the repo.
 
+Fantasy-platform credentials belong to you and may grant access to private league data or account actions. Do not share ESPN cookies, Yahoo OAuth tokens, or similar secrets, and understand that misuse of this unofficial SDK may affect your accounts or violate platform policies.
+
 ## Supply Chain
 
 This project follows [npm security best practices](https://github.com/lirantal/npm-security-best-practices):
