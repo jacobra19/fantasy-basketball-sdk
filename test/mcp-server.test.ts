@@ -123,18 +123,21 @@ describe('mcp results', () => {
   it('preserves actionable config errors', () => {
     expect(
       sanitizeErrorMessage(new Error('Missing required environment variable: ESPN_LEAGUE_ID')),
-    ).toBe('Missing required environment variable: ESPN_LEAGUE_ID');
+    ).toContain('FB_MCP_CONFIG_MISSING');
     expect(
       sanitizeErrorMessage(
         new Error('Missing Yahoo league configuration: set YAHOO_LEAGUE_KEY or both'),
       ),
-    ).toMatch(/Missing Yahoo league configuration/);
+    ).toContain('FB_MCP_CONFIG_INCOMPLETE');
   });
 
   it('redacts internal error details', () => {
     expect(
       sanitizeErrorMessage(new Error('FetchError: https://example.com?token=secret failed')),
-    ).toBe('Tool failed: an unexpected error occurred while fetching fantasy data.');
+    ).toContain('FB_MCP_FETCH_FAILED');
+    expect(
+      sanitizeErrorMessage(new Error('FetchError: https://example.com?token=secret failed')),
+    ).not.toContain('secret');
   });
 
   it('returns sanitized errors from runTool', async () => {
@@ -142,9 +145,7 @@ describe('mcp results', () => {
       throw new Error('TypeError: Cannot read properties of undefined');
     });
     expect(result.isError).toBe(true);
-    expect(textContent(result)).toBe(
-      'Tool failed: an unexpected error occurred while fetching fantasy data.',
-    );
+    expect(textContent(result)).toContain('FB_MCP_UNEXPECTED');
   });
 
   it('times out long-running tools', async () => {
@@ -156,7 +157,7 @@ describe('mcp results', () => {
       { timeoutMs: 50 },
     );
     expect(result.isError).toBe(true);
-    expect(textContent(result)).toMatch(/timed out/i);
+    expect(textContent(result)).toContain('FB_MCP_TIMEOUT');
   });
 
   it('returns successful JSON results', async () => {

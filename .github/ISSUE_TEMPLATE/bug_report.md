@@ -1,38 +1,47 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Report an SDK, MCP, or CLI bug
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **Describe the bug**
-A clear and concise description of what the bug is.
+A clear and concise description of what failed.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+
+1. Run `...`
+2. Call MCP tool `...` with sanitized input `...`
+3. See error code/output `...`
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Environment**
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+- Package version: output of `fantasy-basketball-mcp --version`
+- Node.js version: output of `node --version`
+- OS and shell:
+- Install method: npm, npx, Docker, local tarball, or source checkout
+- MCP client, if applicable:
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+**Diagnostics**
+Paste sanitized output from:
+
+```bash
+fantasy-basketball-mcp --diagnose
+```
+
+If debug output is needed, rerun with `FANTASY_BASKETBALL_MCP_DEBUG=1` and include only redacted output.
+
+**Configuration source**
+
+- ESPN: env vars, MCP client env, Docker env, or other
+- Yahoo: env vars, MCP client env, Docker env, or other
+
+Do not paste ESPN cookies, Yahoo OAuth tokens, private league data, or `.env` files with real values.
 
 **Additional context**
 Add any other context about the problem here.

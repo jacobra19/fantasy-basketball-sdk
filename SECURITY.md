@@ -19,6 +19,8 @@ This SDK and its MCP server read fantasy-platform credentials from environment v
 - Use [`.env.example`](./.env.example) as a template with placeholder values only.
 - For MCP smoke tests locally, inject secrets via your shell or a secret manager rather than persisting them in the repo.
 
+Fantasy-platform credentials belong to you and may grant access to private league data or account actions. Do not share ESPN cookies, Yahoo OAuth tokens, or similar secrets, and understand that misuse of this unofficial SDK may affect your accounts or violate platform policies.
+
 ## Supply Chain
 
 This project follows [npm security best practices](https://github.com/lirantal/npm-security-best-practices):
@@ -27,6 +29,8 @@ This project follows [npm security best practices](https://github.com/lirantal/n
 - Project [`.npmrc`](./.npmrc) disables install scripts, blocks git dependencies, and enforces a release-age cooldown
 - Lockfile linting and `npm audit` run in CI via `npm run security`
 - npm packages are published with **provenance** via GitHub Actions trusted publishing (OIDC)
+
+This package is both an SDK and an MCP CLI. We intentionally do **not** publish `npm-shrinkwrap.json` today because shrinkwrap would force transitive dependency versions on SDK consumers. Instead, CI keeps the committed lockfile audited, Dependabot updates both production and development dependencies, and the published dependency surface is kept small. If `fantasy-basketball-mcp` becomes a separately distributed CLI package, add `npm-shrinkwrap.json` to that package.
 
 Maintainers should enable **2FA** on npm accounts (`npm profile enable-2fa auth-and-writes`) and verify provenance appears on [npmjs.com/package/fantasy-basketball-sdk](https://www.npmjs.com/package/fantasy-basketball-sdk) after each release.
 
