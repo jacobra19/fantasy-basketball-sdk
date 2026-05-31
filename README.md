@@ -30,6 +30,8 @@
 
 > **Early development** — ESPN and Yahoo NBA APIs are available. Fantrax is still a placeholder.
 
+> **Unofficial SDK** — This project is not official, endorsed, sponsored, or affiliated with ESPN, Yahoo, Fantrax, or any other fantasy platform. You are responsible for complying with each platform's terms, API rules, rate limits, and account policies. The SDK is provided as-is; use it at your own risk, especially with private credentials or write actions such as lineup changes and player adds.
+
 ## Features
 
 - **ESM-only** with TypeScript types included (`dist/*.d.ts`)
