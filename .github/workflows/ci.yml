@@ -39,6 +39,12 @@ jobs:
 
       - run: npm run verify
 
+      - name: Build MCP Docker image
+        run: docker build -t fantasy-basketball-mcp .
+
+      - name: Smoke MCP Docker CLI
+        run: docker run --rm fantasy-basketball-mcp --version
+
   release:
     name: Release
     runs-on: ubuntu-latest

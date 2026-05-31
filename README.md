@@ -8,7 +8,6 @@
 </p>
 <br/>
 
-
 <p align="center">
 <a href="https://github.com/jacobra19/fantasy-basketball-sdk/actions?query=branch%3Amain"><img src="https://github.com/jacobra19/fantasy-basketball-sdk/actions/workflows/ci.yml/badge.svg?event=push&branch=main" alt="CI status" /></a>
 <a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://img.shields.io/github/license/jacobra19/fantasy-basketball-sdk" alt="License"></a>
@@ -61,6 +60,47 @@ npm install /path/to/fantasy-basketball-sdk/fantasy-basketball-sdk-*.tgz
 # Or link for iterative development
 npm link
 ```
+
+## MCP CLI
+
+The package publishes a read-only MCP stdio server as `fantasy-basketball-mcp`.
+Use it from an MCP client, or run diagnostics directly from a shell:
+
+```bash
+npx -p fantasy-basketball-sdk fantasy-basketball-mcp --help
+npx -p fantasy-basketball-sdk fantasy-basketball-mcp --version
+npx -p fantasy-basketball-sdk fantasy-basketball-mcp --diagnose
+```
+
+Configure credentials in your MCP client environment, not in source control:
+
+```bash
+ESPN_LEAGUE_ID=123456
+ESPN_SEASON_ID=2025
+ESPN_S2=...        # private ESPN leagues only
+ESPN_SWID=...      # private ESPN leagues only
+
+YAHOO_ACCESS_TOKEN=...
+YAHOO_LEAGUE_KEY=... # or use YAHOO_LEAGUE_ID plus YAHOO_SEASON
+```
+
+Diagnostics print sanitized readiness data only; secret values are never shown. For deeper troubleshooting, set `FANTASY_BASKETBALL_MCP_DEBUG=1` or pass `--debug` when launching the server. Debug output is redacted and appears only in error responses or stderr.
+
+Exit codes:
+
+- `0`: help, version, diagnostics, or server startup completed successfully.
+- `1`: startup failed.
+- `2`: unsupported CLI arguments.
+
+Docker usage:
+
+```bash
+docker build -t fantasy-basketball-mcp .
+docker run --rm fantasy-basketball-mcp --version
+docker run --rm --env ESPN_LEAGUE_ID --env ESPN_SEASON_ID fantasy-basketball-mcp
+```
+
+When reporting MCP/CLI bugs, include `fantasy-basketball-mcp --version`, `node --version`, your OS, the sanitized `--diagnose` output, the MCP client, and any `FB_MCP_*` error code. Do not include ESPN cookies, Yahoo tokens, or private league data.
 
 ## Quick start
 
@@ -154,14 +194,14 @@ const league = await League.create({ leagueId: 123456, seasonId: 2025 });
 
 ## Subpath exports
 
-| Subpath                          | Purpose                    | Main symbols (today)               |
-| -------------------------------- | -------------------------- | ---------------------------------- |
-| `fantasy-basketball-sdk`         | Root entry                 | `Provider`, `PROVIDERS`            |
-| `fantasy-basketball-sdk/espn`    | ESPN NBA read API          | `League`, `Team`, `Player`, `Matchup` |
+| Subpath                          | Purpose                      | Main symbols (today)                              |
+| -------------------------------- | ---------------------------- | ------------------------------------------------- |
+| `fantasy-basketball-sdk`         | Root entry                   | `Provider`, `PROVIDERS`                           |
+| `fantasy-basketball-sdk/espn`    | ESPN NBA read API            | `League`, `Team`, `Player`, `Matchup`             |
 | `fantasy-basketball-sdk/yahoo`   | Yahoo NBA API (read + write) | `League`, `Game`, `Team`, `Player`, `YahooClient` |
-| `fantasy-basketball-sdk/fantrax` | Fantrax module             | `PROVIDER`                         |
-| `fantasy-basketball-sdk/core`    | Shared types and constants | `Provider`, `PROVIDERS`            |
-| `fantasy-basketball-sdk/runtime` | HTTP adapter               | `FetchClient`, `createFetchClient` |
+| `fantasy-basketball-sdk/fantrax` | Fantrax module               | `PROVIDER`                                        |
+| `fantasy-basketball-sdk/core`    | Shared types and constants   | `Provider`, `PROVIDERS`                           |
+| `fantasy-basketball-sdk/runtime` | HTTP adapter                 | `FetchClient`, `createFetchClient`                |
 
 ## Tree-shaking
 
